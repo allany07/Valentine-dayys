@@ -26,8 +26,8 @@ body {
 
 /* Envelope Styles */
 .envelope {
-    width: 300px;
-    height: 200px;
+    width: 500px;
+    height: 300px;
     background-color: white;
     border-radius: 10px;
     position: relative;
@@ -48,7 +48,8 @@ body {
     border-bottom: 100px solid #ff6b6b;
     position: absolute;
     top: -50px;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .envelope-content {
@@ -64,8 +65,8 @@ body {
 
 /* Card Front Styles */
 .card-front {
-    width: 280px;
-    height: 400px;
+    width: 500px;
+    height: 300px;
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
@@ -91,7 +92,7 @@ body {
 
 /* Card Back Styles */
 .card-back {
-    width: 320px;
+    width: 700px;
     height: 500px;
     background-color: white;
     border-radius: 10px;
@@ -99,6 +100,15 @@ body {
     padding: 30px;
     overflow-y: auto;
     text-align: center;
+
+    /* Scroll invisível mas funcional */
+    scrollbar-width: none;       /* Firefox */
+    -ms-overflow-style: none;    /* IE e Edge */
+}
+
+.card-back::-webkit-scrollbar {
+    width: 0;
+    height: 0;
 }
 
 .card-back h2 {
@@ -170,6 +180,9 @@ body {
         border-left: 125px solid transparent;
         border-right: 125px solid transparent;
         border-bottom: 80px solid #ff6b6b;
+        left: 50%;
+        transform: translateX(-50%);
+        top: -40px;
     }
     
     .card-front {
@@ -181,6 +194,14 @@ body {
         width: 280px;
         height: 450px;
         padding: 20px;
+
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .card-back::-webkit-scrollbar {
+        width: 0;
+        height: 0;
     }
     
     .card-front h1, .card-back h2 {
@@ -192,7 +213,51 @@ body {
     }
 }
 
-/* Adicionando animações CSS para transições mais suaves */
+/* Melhorando responsividade para dispositivos muito pequenos */
+@media (max-width: 350px) {
+    .envelope {
+        width: 220px;
+        height: 150px;
+    }
+    
+    .envelope-flap {
+        border-left: 110px solid transparent;
+        border-right: 110px solid transparent;
+        border-bottom: 70px solid #ff6b6b;
+        left: 50%;
+        transform: translateX(-50%);
+        top: -35px;
+    }
+    
+    .card-front {
+        width: 220px;
+        height: 320px;
+    }
+    
+    .card-back {
+        width: 250px;
+        height: 420px;
+        padding: 15px;
+
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .card-back::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+    }
+    
+    .card-message {
+        font-size: 12px;
+    }
+    
+    .card-photo {
+        max-width: 200px;
+    }
+}
+
+/* Animações CSS para transições suaves */
 @keyframes fadeIn {
     from { opacity: 0; transform: scale(0.8); }
     to { opacity: 1; transform: scale(1); }
@@ -209,37 +274,4 @@ body {
 
 .fade-out {
     animation: fadeOut 0.5s forwards;
-}
-
-/* Melhorando responsividade para dispositivos muito pequenos */
-@media (max-width: 350px) {
-    .envelope {
-        width: 220px;
-        height: 150px;
-    }
-    
-    .envelope-flap {
-        border-left: 110px solid transparent;
-        border-right: 110px solid transparent;
-        border-bottom: 70px solid #ff6b6b;
-    }
-    
-    .card-front {
-        width: 220px;
-        height: 320px;
-    }
-    
-    .card-back {
-        width: 250px;
-        height: 420px;
-        padding: 15px;
-    }
-    
-    .card-message {
-        font-size: 12px;
-    }
-    
-    .card-photo {
-        max-width: 200px;
-    }
 }
